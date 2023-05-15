@@ -272,5 +272,7 @@ page{
 	height: 80rpx;
 	border-radius: 40rpx;
 	margin: 0 20rpx;
+	background: #007aff;
+	line-height: 80rpx;
 }
 </style>
