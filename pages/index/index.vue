@@ -7,30 +7,31 @@
 			<!-- </view> -->
 			<view class="ipt-view">
 				<view class="label">A</view>
-				<input class="ipt" v-model="info.A" type="number">
+				<input class="ipt" v-model="info.A" type="digit">
 				<view class="util">deg</view>
 			</view>
 			<view class="ipt-view">
 				<view class="label">B</view>
-				<input class="ipt" v-model="info.B" type="number">
+				<input class="ipt" v-model="info.B" type="digit">
 				<view class="util">deg</view>
 			</view>
 			<view class="ipt-view">
 				<view class="label">a</view>
-				<input class="ipt" v-model="info.a" type="number">
+				<input class="ipt" v-model="info.a" type="digit">
 			</view>
 			<view class="ipt-view">
 				<view class="label">b</view>
-				<input class="ipt" v-model="info.b" type="number">
+				<input class="ipt" v-model="info.b" type="digit">
 			</view>
 			<view class="ipt-view">
 				<view class="label">c</view>
-				<input class="ipt" v-model="info.c" type="number">
+				<input class="ipt" v-model="info.c" type="digit">
 			</view>
 			<view class="btn">
 				<button class="handel" type="primary" @click="compute">计算</button>
 				<button class="handel" type="primary" @click="clear">清空</button>
 			</view>
+			<button class="arbitrarily handel" type="primary" @click="jump">切换为任意三角形</button>
 		</view>
 	</view>
 </template>
@@ -104,13 +105,13 @@ const compute = () => {
 		// 没有数据的即是要求的边
 		if (a.length == 0) {
 			a_float = Math.sqrt(accSub(c2, b2));
-			info.value.a = a_float;
+			info.value.a = accAdd(a_float, 0);
 		} else if (b.length == 0) {
 			b_float = Math.sqrt(accSub(c2, a2));
-			info.value.b = b_float;
+			info.value.b = accAdd(b_float, 0);
 		} else if (c.length == 0) {
 			c_float = Math.sqrt(accAdd(a2, b2));
-			info.value.c = c_float;
+			info.value.c = accAdd(c_float, 0);
 		}
 
 		let A_float = accMul(Math.asin(a_float / c_float), 180) / Math.PI;
@@ -207,6 +208,12 @@ const clear = () => {
 		c: '',
 	}
 }
+// 页面跳转
+const jump = () => {
+	uni.navigateTo({
+		url: '/pages/arbitrary/arbitrary'
+	})
+}
 </script>
 
 <style scoped lang="scss">
@@ -274,5 +281,9 @@ page{
 	margin: 0 20rpx;
 	background: #007aff;
 	line-height: 80rpx;
+}
+.arbitrarily{
+	width: 450rpx;
+	margin: 40rpx auto;
 }
 </style>

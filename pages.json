@@ -7,6 +7,14 @@
 				"titleNView": false
 			}
 		}
+	},
+	{
+		"path" : "pages/arbitrary/arbitrary",
+		"style" : 
+		{
+			"navigationBarTitleText" : "任意三角形函数计算",
+			"enablePullDownRefresh" : false
+		}
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
