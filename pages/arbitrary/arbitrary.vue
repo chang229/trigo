@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+	import { onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'; 
 	import {
 		ref
 	} from 'vue';
@@ -1128,6 +1129,9 @@
 		AdjustOutputValues();
 		return
 	}
+	//分享
+onShareAppMessage(() => {})
+onShareTimeline(() => {})
 </script>
 
 <style scoped lang="scss">

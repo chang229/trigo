@@ -38,7 +38,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import { accAdd, accSub, accMul, accDiv } from '@/util'
+import { accAdd, accSub, accMul, accDiv } from '@/util';
+import { onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'; 
 const info = ref({
 	A: '',
 	B: '',
@@ -214,6 +215,9 @@ const jump = () => {
 		url: '/pages/arbitrary/arbitrary'
 	})
 }
+//分享
+onShareAppMessage(() => {})
+onShareTimeline(() => {})
 </script>
 
 <style scoped lang="scss">
