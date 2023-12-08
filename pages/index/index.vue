@@ -1,5 +1,9 @@
 <template>
 	<view class="container">
+		<!-- 广告位 -->
+		<view class="ad-container">
+			<ad unit-id="adunit-66f9cc1d3e97c3aa"></ad>
+		</view>
 		<image class="bg" src="@/static/trigo.jpg"></image>
 		<view class="review">
 			<!-- <view class="triangle-container"> -->
@@ -229,6 +233,12 @@ page{
 	height: 100vh;
 	position: relative;
 }
+.ad-container{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
 .bg{
 	width: 100%;
 	height: 100vh;
@@ -248,9 +258,10 @@ page{
 	background: #fff;
 }
 .triangle{
-	width: 50%;
+	width: 397rpx;
+	height: 264rpx;
 	display: block;
-	margin: 50rpx auto;
+	margin: 300rpx auto 80rpx;
 }
 .ipt-view{
 	display: flex;

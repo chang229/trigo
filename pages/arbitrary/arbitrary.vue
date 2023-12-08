@@ -1,5 +1,9 @@
 <template>
 	<view class="container">
+		<!-- 广告位 -->
+		<view class="ad-container">
+			<ad unit-id="adunit-66f9cc1d3e97c3aa"></ad>
+		</view>
 		<image class="bg" src="@/static/trigo.jpg"></image>
 		<view class="review">
 			<!-- <view class="triangle-container"> -->
@@ -41,7 +45,7 @@
 </template>
 
 <script setup>
-	import { onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'; 
+	import { onShareAppMessage, onShareTimeline, onShow } from '@dcloudio/uni-app'; 
 	import {
 		ref
 	} from 'vue';
@@ -1132,6 +1136,29 @@
 	//分享
 onShareAppMessage(() => {})
 onShareTimeline(() => {})
+onShow(() => {
+	console.log('show')
+	console.log(wx.createInterstitialAd)
+	let interstitialAd = null;
+	if (wx.createInterstitialAd) {
+		interstitialAd = wx.createInterstitialAd({
+			adUnitId: 'adunit-8e2d4f0bbdb8e194'
+		})
+  		interstitialAd.onLoad(() => {
+			console.log('success')
+		})
+  		interstitialAd.onError((err) => {
+    		console.error('插屏广告加载失败', err)
+  		})
+  		interstitialAd.onClose(() => {})
+	}
+	// 在适合的场景显示插屏广告
+	if (interstitialAd) {
+		interstitialAd.show().catch((err) => {
+			console.error('插屏广告显示失败', err)
+		})
+	}
+})
 </script>
 
 <style scoped lang="scss">
@@ -1144,7 +1171,12 @@ onShareTimeline(() => {})
 		height: 100vh;
 		position: relative;
 	}
-
+	.ad-container{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
 	.bg {
 		width: 100%;
 		height: 100vh;
@@ -1167,9 +1199,10 @@ onShareTimeline(() => {})
 	}
 
 	.triangle {
-		width: 50%;
+		width: 300rpx;
+		height: 315rpx;
 		display: block;
-		margin: 50rpx auto;
+		margin: 280rpx auto 60rpx;
 	}
 
 	.ipt-view {
